@@ -20,8 +20,10 @@ const vuvuzela = (a, b, c) => {
     return result;
   };
   
-  vuvuzela(Input_a, Input_b, Input_c)
 
 //   eval(vuvuzela(2, 4, "/"))
   
-  
+  const Ans = () => {
+    vuvuzela(Input_a, Input_b, Input_c)
+
+  }
