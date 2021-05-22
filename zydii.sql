@@ -48,9 +48,8 @@ INSERT INTO `accounts` (`id`, `username`, `password`, `email`) VALUES
 --
 
 CREATE TABLE `result` (
-  `a` int(11) NOT NULL,
-  `b` int(30) NOT NULL,
-  `c` varchar(1) NOT NULL
+  `number` int(11) NOT NULL,
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

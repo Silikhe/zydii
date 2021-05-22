@@ -34,7 +34,7 @@ app.get('/', function(request, response) {
 
 
 //login the user
-app.post('/', function(request, response) {
+app.post('/auth', function(request, response) {
 	var username = request.body.username;
 	var password = request.body.password;
 	if (username && password) {
@@ -55,41 +55,39 @@ app.post('/', function(request, response) {
 });
 
 
+//Post the result
+app.post('/res', function(request, response) {
+	var username = request.body.username;
+	var password = request.body.password;
+	if (username && password) {
+		connection.query('SELECT * FROM result WHERE number = @last_number', [number], function(error, res, fields) {
+			if (res.length > 0) {
+                const Input_a = document.getElementById("Quadratic_Comma_Separator");
+                request.session.res = res;
+                Input_a.innerText=  request.session.res
+				response.redirect('/home');
+			} else {
+				response.send('Incorrect Username and/or Password!');
+			}			
+			response.end();
+		});
+	} else {
+		response.send('Please enter Username and Password!');
+		response.end();
+	}
+});
+
 //redirect to login
 
-app.get('/index', function(request, response) {
+app.get('/calc', function(request, response) {
 	if (request.session.loggedin) {
 		response.send('Welcome back, ' + request.session.username + '!');
+        response.sendFile(path.join(__dirname + '/index.html'));
 	} else {
 		response.send('Please login to view Calculator');
 	}
 	response.end();
 });
-
-const Input_a = document.getElementById("Input-A");
-const Input_b = document.getElementById("Input-B");
-const Input_c = document.getElementById("Input-C");
-const Input_d = document.getElementById("Input-D");
-
-
-
-
-// qustion 1a
-const vuvuzela = (a, b, c) => {
-  a = parseInt(a);
-  b = parseInt(b);
-  if ((c != "+" || "-" || "/" || "*")) {
-    return 0;
-  }
-
-  let result = `${a}  ${c}  ${b}`;
-  result = eval(result)
-  return result;
-};
-
-
-eval(vuvuzela(2, 4, "/"))
-
 
 
 
@@ -115,24 +113,3 @@ app.post('/vuvuzela', function(request, response) {
 
 
 
-// const postResult = () => {
-//   fetch("http://localhost:3000/vuvuzela", {
-//     method: "post",
-//     header: {
-//       Accept: "application/json",
-//       "Content-type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       result: result,
-//     }),
-//   })
-//     .then((response) => response.json())
-//     .then((responseJson) => {
-//       var myJSON = JSON.stringify(responseJson);
-//       console.log(myJSON);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// };
-// postResult();
