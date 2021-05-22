@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="Quadratic Calculator">
+        <!-- Output -->
+        <span class="Answer">
+          <span id="Quadratic_CalcOutput" class="Hide">
+            <span id="Quadratic_X">x = </span>
+            <span id="Quadratic_AnsBox">
+              <span id="Quadratic_FinalAns0" class="FinalAns0">
+              </span>
+              <span id="Quadratic_Comma_Separator"> ,
+              </span>
+              <span id="Quadratic_FinalAns1" class="FinalAns1">
+              </span>
+            </span>
+          </span>
+        </span>
+    
+        <span class="CalcBlock">
+          <input id="Input-A" type="text" autocomplete="off" placeholder="enter number a" class="NumberInput" onkeyup="Unhide(); Ans(); " />
+          <input id="Input-B" type="text" autocomplete="off" placeholder="enter number a" class="NumberInput" onkeyup="Unhide(); Ans();" />
+          <input id="Input-C" type="text" autocomplete="off" placeholder="enter number a" class="NumberInput" onkeyup="Unhide(); Ans();" />
+          <div class="CalcBlock">
+            <button class="ResetButton" OnClick="Hide();">View Answer
+            </button>
+          </div>
+      </div>
+</body>
+</html>
